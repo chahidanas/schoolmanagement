@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <style media="screen">
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-image: url('{% static "images/EmpClass.jpg" %}');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
+    .content-wrapper {
+      background: rgba(255, 255, 255, 0); /* Slightly transparent background */
+    }
+
+    .jumbotron {
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+      color: rgb(0, 0, 0);
+    }
+
+    .alert {
+      margin: 0;
+    }
+
+    .glow {
+      font-size: 90px;
+      color: #000000;
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  {% include "school/navbar.html" %}
+  <div class="content-wrapper">
+    <div class="jumbotron">
+      <h1 class="display-4 glow"><b>School Management System</b></h1>
+      <h3 class="text-center">Using Python Django</h3>
+      <p class="lead">
+        <a class="btn btn-danger btn-lg" href="/studentsignup" role="button">Sign Up as Student</a>
+      </p>
+    </div>
+    {% include "school/admin_teacher_student_card.html" %}
+  </div>
+  {% include "school/footer.html" %}
+</body>
+
+</html>

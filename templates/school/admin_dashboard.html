@@ -1,0 +1,84 @@
+{% extends 'school/adminbase.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+  <style media="screen">
+    .notice-section {
+      margin-left: 25%;
+      margin-right: 25%;
+      border: 1px solid #ccc; /* Add border around the notice section */
+      border-radius: 5px; /* Optional: Add rounded corners */
+      padding: 10px; /* Add padding for better spacing */
+    }
+
+    .w3-panel {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: sticky;
+      bottom: 0;
+      border-top: 1px solid #ddd; /* Add border at the top of the notice section */
+      border-bottom: 1px solid #ddd; /* Add border at the bottom of the notice section */
+    }
+
+    .w3-panel p {
+      margin: 0; /* Remove default margin */
+    }
+
+    .alert {
+      margin-top: 10px;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+      border: 1px solid #ccc; /* Add border around each notice */
+      border-radius: 5px; /* Optional: Add rounded corners */
+    }
+
+    .closebtn {
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<br>
+
+{% include 'school/admin_dashboard_cards.html' %}
+
+<br><br>
+
+<div class="notice-section">
+  <div class="w3-panel w3-black">
+    <p>Notice Board</p>
+  </div>
+
+  {% if notice %}
+    {% for n in notice %}
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Posted on {{ n.date }} </strong><br>
+        <b>By : {{ n.by }}</b><br>
+        {{ n.message }}
+      </div>
+    {% endfor %}
+  {% else %}
+    <!-- Show a message if there are no notices -->
+    <div class="alert">
+      <p>No notices available.</p>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock content %}
